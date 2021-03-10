@@ -8,6 +8,10 @@ namespace CinemaLogic.Managers
 {
     public class CategoryManager
     {
+        public CategoryManager()
+        {
+                
+        }
         public List<Categories> GetCategories()
         {
             using (var db = new CinemaDb())
@@ -15,5 +19,11 @@ namespace CinemaLogic.Managers
                 return db.Categories.OrderBy(t => t.Title).ToList();
             }
         }
+
+
+
+
+
+
     }
 }

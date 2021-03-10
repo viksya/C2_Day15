@@ -12,11 +12,14 @@ namespace CinemaWeb.Controllers
 {
     public class HomeController : Controller
     {
-       
+        private CategoryManager category = new CategoryManager();
+        private MovieManager movie = new MovieManager();
 
         public IActionResult Index()
         {
-            return View();
+            var movies = movie.GetMovies();
+
+            return View(movies);
         }
 
         

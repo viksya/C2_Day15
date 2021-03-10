@@ -10,6 +10,10 @@ namespace CinemaWeb.Controllers
     public class MoviesController : Controller
     {
         private CategoryManager category = new CategoryManager();
+        private MovieManager movie = new MovieManager();
+
+
+
         public IActionResult Category()
         {
             var data = category.GetCategories();
@@ -18,7 +22,30 @@ namespace CinemaWeb.Controllers
 
         public IActionResult Booking()
         {
-            return View();
+            var booking = movie.UserBookings(); 
+
+            return View(booking);
         }
+
+
+        public IActionResult BookAMovie(string title)
+        {
+            movie.BookAMovie(title);
+
+            return RedirectToAction(nameof(Booking));
+        }
+
+        public IActionResult CancelBooking(string title)
+        {
+            movie.CancelBooking(title);
+
+            // send to page
+            return RedirectToAction(nameof(Booking));
+        }
+
+
+
+
+
     }
 }
