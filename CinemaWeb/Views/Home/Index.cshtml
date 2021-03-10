@@ -1,6 +1,13 @@
-﻿@{
-    ViewData["Title"] = "Movies";
-}
+﻿@model List<CinemaLogic.DB.Movies>
+
+<ul class="nav nav-pills mb-3">
+    @foreach (var movie in Model)
+    {
+        <li class="nav-item">
+            <a class="nav-link" href="#">@movie.Id</a>
+        </li>
+    }
+</ul>
 
 <div class="p-3 mb-2 bg-dark text-warning">
     <ul class="nav nav-tabs">

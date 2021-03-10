@@ -14,7 +14,7 @@ namespace CinemaWeb.Controllers
 
 
 
-        public IActionResult Category()
+        public IActionResult Category(int id)
         {
             var data = category.GetCategories();
             return View(data);
