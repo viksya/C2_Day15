@@ -1,10 +1,10 @@
-﻿@model List<CinemaLogic.DB.Movies>
+﻿@model List<CinemaLogic.DB.Categories>
 
 <ul class="nav nav-pills mb-3">
-    @foreach (var movie in Model)
+    @foreach (var category in Model)
     {
         <li class="nav-item">
-            <a class="nav-link" href="#">@movie.Title</a>
+            <a class="nav-link" href="#">@category.Title</a>
         </li>
     }
 </ul>
