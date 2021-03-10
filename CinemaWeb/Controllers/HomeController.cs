@@ -15,7 +15,7 @@ namespace CinemaWeb.Controllers
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
 
-        public IActionResult Index()
+        public IActionResult Index(int id)
         {
             var movies = movie.GetMovies();
 

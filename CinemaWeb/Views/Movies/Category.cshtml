@@ -1,28 +1,28 @@
-﻿@model List<CinemaLogic.DB.Categories>
+﻿@model List<CinemaLogic.DB.Movies>
 
-<ul class="nav nav-pills mb-3">
-    @foreach (var category in Model)
-    {
-        <li class="nav-item">
-            <a class="nav-link" href="#">@category.Title</a>
-        </li>
-    }
-</ul>
+    <ul class="nav nav-pills mb-3">
+        @foreach (var movie in Model)
+        {
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Movies" asp-action="Index" asp-route-id="@movie.MovieId">Take</a>
+            </li>
+        }
+    </ul>
 
 
 <div class="p-3 mb-2 bg-dark text-warning">
     <ul class="nav nav-pills mb-3">
         <li class="nav-item">
-            <a class="nav-link active text-dark bg-warning" asp-controller="Movies" asp-action="Category">Thriller</a>
+            <a class="nav-link active text-dark bg-warning" asp-controller="Movies" asp-action="Category" asp-route-id="1">Thriller</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category">Comedy</a>
+            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="2">Comedy</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category">Action</a>
+            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="3">Action</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category">Fantasy</a>
+            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="4">Fantasy</a>
         </li>
     </ul>
 </div>
