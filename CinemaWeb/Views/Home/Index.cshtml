@@ -1,4 +1,4 @@
-﻿
+﻿@model CategoryModel
 
 <div class="p-3 mb-2 bg-dark text-warning">
     <ul class="nav nav-tabs">
@@ -8,70 +8,37 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-warning" data-bs-toggle="dropdown" asp-controller="Movies" asp-action="Category" role="button" aria-expanded="false">Categories</a>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" asp-controller="Movies" asp-action="Category" asp-route-id="1" >Thriller</a></li>
-                <li><a class="dropdown-item" asp-controller="Movies" asp-action="Category" asp-route-id="2">Comedy</a></li>
-                <li><a class="dropdown-item" asp-controller="Movies" asp-action="Category" asp-route-id="3">Action</a></li>
-                <li><a class="dropdown-item" asp-controller="Movies" asp-action="Category" asp-route-id="4">Fantasy</a></li>
-            </ul>
+                @foreach (var category in Model.Movies)
+                {
+                    <li><a class="dropdown-item" asp-controller="Movies" asp-action="Category" asp-route-id="1">Thriller</a></li>
+                    <li><a class="dropdown-item" asp-controller="Movies" asp-action="Category" asp-route-id="2">Comedy</a></li>
+                    <li><a class="dropdown-item" asp-controller="Movies" asp-action="Category" asp-route-id="3">Action</a></li>
+                    <li><a class="dropdown-item" asp-controller="Movies" asp-action="Category" asp-route-id="4">Fantasy</a></li>
+                }
+                </ul>
         </li>
     </ul>
 </div>
 
 
 
-<div class="row">
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card bg-dark">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
+
+<div class="row row-cols-md-2">
+
+
+        @foreach (var movie in Model.Movies)
+        {
+
+            <div class="card bg-dark"><img src="@movie.Pic" class="card-img-right" alt="..."></div>
             <div class="card-body">
-                <a asp-controller="Movies" asp-action="Category" class="text-warning">Title</a>
-                <p class="card-text"><small class="text-muted">15:00</small></p>
+                <a class="text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="@movie.Id">@movie.Title</a>
+                <p class="card-text"><small class="text-muted">@movie.AvailableTime</small></p>
             </div>
-        </div>
+
+        }
     </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card bg-dark">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Movies" asp-action="Category" class="text-warning">Title</a>
-                <p class="card-text"><small class="text-muted">15:00</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card bg-dark">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Movies" asp-action="Category" class="text-warning">Title</a>
-                <p class="card-text"><small class="text-muted">15:00</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card bg-dark">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Movies" asp-action="Category" class="text-warning">Title</a>
-                <p class="card-text"><small class="text-muted">15:00</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card bg-dark">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Movies" asp-action="Category" class="text-warning">Title</a>
-                <p class="card-text"><small class="text-muted">15:00</small></p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4 col-sm-12 mb-3">
-        <div class="card bg-dark">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-            <div class="card-body">
-                <a asp-controller="Movies" asp-action="Category" class="text-warning">Title</a>
-                <p class="card-text"><small class="text-muted">15:00</small></p>
-            </div>
-        </div>
-    </div>
-</div>
+
+
+
+
+

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CinemaWeb.Models
 {
-    public class CategoryModel
+    public class BookingModel
     {
         public List<Categories> Categories { get; set; }
 
@@ -14,6 +14,8 @@ namespace CinemaWeb.Models
 
         public List<Bookings> Bookings { get; set; }
 
-        public Categories ActiveCategory { get; set; }
+
+
+
     }
 }

@@ -12,7 +12,7 @@ namespace CinemaLogic.Managers
         {
                 
         }
-        public List<Movies> GetMovies(int count = 6)
+        public List<Movies> GetMovies(int count = 12)
         {
             using (var db = new CinemaDb())
             {

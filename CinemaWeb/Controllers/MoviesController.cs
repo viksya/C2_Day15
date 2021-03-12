@@ -25,9 +25,15 @@ namespace CinemaWeb.Controllers
 
                 model.Movies = movie.GetMovByCategory(id.Value);
             }
-
+            else
+            {
+                model.Movies = movie.GetMovies();
+            }
             return View(model);
         }
+
+
+
 
         public IActionResult Movie(int? id)
         {
@@ -38,9 +44,8 @@ namespace CinemaWeb.Controllers
 
         public IActionResult Booking()
         {
-            var booking = movie.UserBookings(); 
-
-            return View(booking);
+            BookingModel model = new BookingModel();
+            return View(model);
         }
 
 

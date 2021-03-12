@@ -13,33 +13,30 @@
 </div>
 
 
-    @if (Model.ActiveCategory != null)
+@if (Model.ActiveCategory != null)
+{
+    <li class="nav-item">
+        <a class="nav-link active text-dark bg-warning" asp-controller="Movies" asp-action="Category" asp-route-id="@Model.ActiveCategory.Id">@Model.ActiveCategory.Title</a>
+    </li>
+}
+
+
+
+@if (Model.Movies != null)
+{
+    @foreach (var movie in Model.Movies)
     {
-        <li class="nav-item">
-            <a class="nav-link active text-dark bg-warning" asp-controller="Movies" asp-action="Category" asp-route-id="@Model.ActiveCategory.Id">@Model.ActiveCategory.Title</a>
-        </li>
-    }
-
-
-
-    @if (Model.Movies != null)
-    {
-        @foreach (var movie in Model.Movies)
-        {
-            <div class="card mb-3" style="max-width: 1200px;">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img src="@movie.Pic" alt="...">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-                    </div>
-                    <div class="col-md-8 bg-dark">
-                        <div class="card-body">
-                            <a class="text-warning" asp-controller="Movies" asp-action="Movie" asp-route-id="@movie.Id">@movie.Title</a>
-                            <p class="card-text, text-warning">@movie.Description</p>
-                            <p class="card-text"><small class="text-muted">@movie.AvailableTime</small></p>
-                        </div>
+        <div class="card mb-3" style="max-width: 1200px;">
+            <div class="row no-gutters">
+                <div class="col-md-4"><img src="@movie.Pic" class="img-fluid" alt="..."></div>
+                <div class="col-md-8 bg-dark">
+                    <div class="card-body">
+                        <a class="text-warning" asp-controller="Movies" asp-action="Movie" asp-route-id="@movie.Id">@movie.Title</a>
+                        <p class="card-text, text-warning">@movie.Description</p>
+                        <p class="card-text"><small class="text-muted">@movie.AvailableTime</small></p>
                     </div>
                 </div>
             </div>
-        }
+        </div>
     }
+}

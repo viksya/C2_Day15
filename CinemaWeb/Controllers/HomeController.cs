@@ -15,18 +15,33 @@ namespace CinemaWeb.Controllers
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
 
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
-            var movies = movie.GetMovies();
+            //var movies = movie.GetMovies();
+            CategoryModel model = new CategoryModel();
+            model.Movies = movie.GetMovies();
+            if (id.HasValue)
+            {
+                model.ActiveCategory = category.GetCategory(id.Value);
 
-            return View(movies);
+                model.Movies = movie.GetMovByCategory(id.Value);
+            }
+
+
+            return View(model);
         }
 
-        public IActionResult Cattt()
+        public IActionResult dropdownCategory(int? id)
         {
-            var cttt = category.GetCategories();
+            CategoryModel model = new CategoryModel();
+            model.Categories = category.GetCategories();
+            if (id.HasValue)
+            {
+                model.ActiveCategory = category.GetCategory(id.Value);
 
-            return View(cttt);
+            }
+
+            return View(model);
         }
     }
 }
