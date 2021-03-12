@@ -16,9 +16,21 @@ namespace CinemaLogic.Managers
         {
             using (var db = new CinemaDb())
             {
-                return db.Movies.OrderByDescending(a => a.AvailableTime).Take(count).ToList();
+                return db.Movies.OrderByDescending(m => m.AvailableTime).Take(count).ToList();
             }
         }
+
+        public List<Movies> GetMovByCategory(int catId)
+        {
+            using (var db = new CinemaDb())
+            {
+                return db.Movies
+                    .Where(m => m.MovieId == catId)
+                    .OrderByDescending(m => m.AvailableTime)
+                    .ToList();
+            }
+        }
+
 
         public Movies BookAMovie(string title)
         {

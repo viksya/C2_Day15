@@ -1,4 +1,5 @@
 ﻿using CinemaLogic.Managers;
+using CinemaWeb.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,10 +15,25 @@ namespace CinemaWeb.Controllers
 
 
 
-        public IActionResult Category(int id)
+        public IActionResult Category(int? id)
         {
-            var data = category.GetCategories();
-            return View(data);
+            CategoryModel model = new CategoryModel();
+            model.Categories = category.GetCategories();
+            if (id.HasValue)
+            {
+                model.ActiveCategory = category.GetCategory(id.Value);
+
+                model.Movies = movie.GetMovByCategory(id.Value);
+            }
+
+            return View(model);
+        }
+
+        public IActionResult Movie(int? id)
+        {
+            var movies = movie.GetMovies();
+
+            return View(movies);
         }
 
         public IActionResult Booking()

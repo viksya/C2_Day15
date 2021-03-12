@@ -14,7 +14,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrap", "Bootstrap", "{
 		MyBooking.html = MyBooking.html
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CinemaConsoleNew", "CinemaConsoleNew\CinemaConsoleNew.csproj", "{8CFF73AB-D44A-4720-9A32-086E71BF1DDA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CinemaConsoleNew", "CinemaConsoleNew\CinemaConsoleNew.csproj", "{8CFF73AB-D44A-4720-9A32-086E71BF1DDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

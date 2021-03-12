@@ -1,58 +1,45 @@
-﻿@model List<CinemaLogic.DB.Movies>
+﻿<div class="p-3 mb-2 bg-dark text-warning">
+    @model CategoryModel
 
     <ul class="nav nav-pills mb-3">
-        @foreach (var movie in Model)
+        @foreach (var category in Model.Categories)
         {
-            <li class="nav-item">
-                <a class="nav-link" asp-controller="Movies" asp-action="Index" asp-route-id="@movie.MovieId">Take</a>
+
+            <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Category" ? "active" : "")">
+                <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="@category.Id">@category.Title</a>
             </li>
         }
     </ul>
-
-
-<div class="p-3 mb-2 bg-dark text-warning">
-    <ul class="nav nav-pills mb-3">
-        <li class="nav-item">
-            <a class="nav-link active text-dark bg-warning" asp-controller="Movies" asp-action="Category" asp-route-id="1">Thriller</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="2">Comedy</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="3">Action</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="4">Fantasy</a>
-        </li>
-    </ul>
 </div>
 
-<div class="card mb-3" style="max-width: 1200px;">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-        </div>
-        <div class="col-md-8 bg-dark">
-            <div class="card-body">
-                <a asp-controller="Movies" asp-action="Category" class="text-warning">Title</a>
-                <p class="card-text, text-warning">Movie description</p>
-                <p class="card-text"><small class="text-muted">15:00</small></p>
+
+    @if (Model.ActiveCategory != null)
+    {
+        <li class="nav-item">
+            <a class="nav-link active text-dark bg-warning" asp-controller="Movies" asp-action="Category" asp-route-id="@Model.ActiveCategory.Id">@Model.ActiveCategory.Title</a>
+        </li>
+    }
+
+
+
+    @if (Model.Movies != null)
+    {
+        @foreach (var movie in Model.Movies)
+        {
+            <div class="card mb-3" style="max-width: 1200px;">
+                <div class="row no-gutters">
+
+                    <div class="col-md-4">
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>@movie.Pic</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
+                    </div>
+                    <div class="col-md-8 bg-dark">
+                        <div class="card-body">
+                            <a class="text-warning" asp-controller="Movies" asp-action="Movie" asp-route-id="@movie.Id">@movie.Title</a>
+                            <p class="card-text, text-warning">@movie.Description</p>
+                            <p class="card-text"><small class="text-muted">@movie.AvailableTime</small></p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<div class="card mb-3" style="max-width: 1200px;">
-    <div class="row no-gutters">
-        <div class="col-md-4">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
-        </div>
-        <div class="col-md-8 bg-dark">
-            <div class="card-body">
-                <a asp-controller="Movies" asp-action="Category" class="text-warning">Title</a>
-                <p class="card-text, text-warning">Movie description</p>
-                <p class="card-text"><small class="text-muted">15:00</small></p>
-            </div>
-        </div>
-    </div>
-</div>
+        }
+    }
