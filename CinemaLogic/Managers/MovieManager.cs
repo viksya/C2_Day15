@@ -37,9 +37,6 @@ namespace CinemaLogic.Managers
             {
                 return db.Movies.FirstOrDefault(m => m.Id == id);
             }
-
-
-
         }
 
 
