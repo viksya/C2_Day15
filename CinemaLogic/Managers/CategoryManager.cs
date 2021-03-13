@@ -28,7 +28,7 @@ namespace CinemaLogic.Managers
             }
         }
 
-        public List<Categories> GetDropdCategories()
+        public List<Categories> GetDropdCategories(int id)
         {
             using (var db = new CinemaDb())
             {

@@ -14,7 +14,6 @@ namespace CinemaWeb.Controllers
     {
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
-        CategoryModel model = new CategoryModel();
         IndexModel indexModel = new IndexModel();
 
         public IActionResult Index(int? id)
@@ -25,13 +24,19 @@ namespace CinemaWeb.Controllers
             if (id.HasValue)
             {
                 indexModel.ActiveCategory = category.GetCategory(id.Value);
-
+                indexModel.ActiveMovie = movie.OneMovie(id.Value);
                 indexModel.Movies = movie.GetMovByCategory(id.Value);
             }
-
+            //else
+            //{
+            //    indexModel.Categories = category.GetCategories();
+            //}
 
             return View(indexModel);
         }
+
+
+
 
         //public IActionResult dropdownCategory(int id)
         //{
@@ -51,9 +56,9 @@ namespace CinemaWeb.Controllers
 
             indexModel.Categories = category.GetCategories();
 
-                indexModel.ActiveCategory = category.GetCategory(id);
+            indexModel.ActiveCategory = category.GetCategory(id);
 
-                indexModel.Movies = movie.GetMovByCategory(id);
+            indexModel.Movies = movie.GetMovByCategory(id);
 
 
             return View(indexModel);

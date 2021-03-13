@@ -6,11 +6,11 @@
             <a class="nav-link active bg-warning" aria-current="page" asp-controller="Home" asp-action="Index">TOP</a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-warning" data-bs-toggle="dropdown" asp-controller="Home" asp-action="dropdownCategory" role="button" aria-haspopup="true" aria-expanded="false">@Model.Categories Categories</a>
+            <a class="nav-link dropdown-toggle text-warning" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-controller="Movies" asp-action="Category" asp-route-id="@Model.Categories"> Categories</a>
             <ul class="dropdown-menu">
                 @foreach (var category in Model.Categories)
                 {
-                    <li><a class="dropdown-item" asp-controller="Home" asp-action="dropdownCategory" asp-route-id="@category.Id">@category.Title</a></li>
+                    <li><a class="dropdown-item" asp-controller="Home" asp-action="Index" asp-route-id="@category.Id">@category.Title</a></li>
 
                 }
                 </ul>
@@ -36,7 +36,23 @@
         }
     </div>
 
+@if (Model.ActiveMovie != null)
+{
+<div class="card mb-3" style="max-width: 1200px;">
+    <div class="row no-gutters">
 
+        <div class="col-md-4"><img src="@Model.ActiveMovie.Pic" class="img-fluid" alt="..."></div>
+
+        <div class="col-md-8 bg-dark">
+            <div class="card-body @(ViewContext.RouteData.Values["action"].ToString() == "Movie" ? "active" : "")">
+                <a class="text-warning" asp-controller="Movies" asp-action="Movie" asp-route-id="@Model.ActiveMovie.Id">@Model.ActiveMovie.Title</a>
+                <p class="card-text, text-warning">@Model.ActiveMovie.Description</p>
+                <p class="card-text"><small class="text-muted">@Model.ActiveMovie.AvailableTime</small></p>
+            </div>
+        </div>
+    </div>
+</div>
+}
 
 
 
