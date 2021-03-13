@@ -14,21 +14,22 @@ namespace CinemaWeb.Controllers
     {
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
+        CategoryModel model = new CategoryModel();
+        MovieModel movModel = new MovieModel();
 
         public IActionResult Index(int? id)
         {
             //var movies = movie.GetMovies();
-            CategoryModel model = new CategoryModel();
-            model.Movies = movie.GetMovies();
+            movModel.Movies = movie.GetMovies();
             if (id.HasValue)
             {
-                model.ActiveCategory = category.GetCategory(id.Value);
+                movModel.ActiveCategory = category.GetCategory(id.Value);
 
-                model.Movies = movie.GetMovByCategory(id.Value);
+                movModel.Movies = movie.GetMovByCategory(id.Value);
             }
 
 
-            return View(model);
+            return View(movModel);
         }
 
         public IActionResult dropdownCategory(int? id)
