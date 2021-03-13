@@ -8,10 +8,10 @@
                 <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>ttt</title><rect width="100%" height="100%" fill="#868e96"></rect><text x="50%" y="50%" fill="#dee2e6" dy=".3em"></text></svg>
             </div>
             <div class="col-md-8 bg-dark">
-                <div class="card-body">
-                    <a class="text-warning" asp-controller="Movies" asp-action="Movie" asp-route-id="@Model.Id">@Model.Title</a>
-                    <p class="card-text, text-warning">@Model.Description</p>
-                    <p class="card-text"><small class="text-muted">@Model.AvailableTime</small></p>
+                <div class="card-body @(ViewContext.RouteData.Values["action"].ToString() == "Movie" ? "active" : "")">
+                    <a class="text-warning" asp-controller="Movies" asp-action="Movie" asp-route-id="@Model.ActiveMovie.Id">@Model.ActiveMovie.Title</a>
+                    <p class="card-text, text-warning">@Model.ActiveMovie.Description</p>
+                    <p class="card-text"><small class="text-muted">@Model.ActiveMovie.AvailableTime</small></p>
                 </div>
             </div>
         </div>
