@@ -12,12 +12,12 @@ namespace CinemaWeb.Controllers
     {
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
-
+        CategoryModel model = new CategoryModel();
 
 
         public IActionResult Category(int? id)
         {
-            CategoryModel model = new CategoryModel();
+            
             model.Categories = category.GetCategories();
             if (id.HasValue)
             {
@@ -37,9 +37,13 @@ namespace CinemaWeb.Controllers
 
         public IActionResult Movie(int? id)
         {
-            var movies = movie.GetMovies();
-
-            return View(movies);
+            model.Movies = movie.GetMovies();
+            //var movies = movie.OneMovie(id);
+            if (id.HasValue)
+            {
+                model.Movies = movie.GetMovByCategory(id.Value);
+            }
+            return View(model);
         }
 
         public IActionResult Booking()

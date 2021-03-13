@@ -12,11 +12,11 @@ namespace CinemaLogic.Managers
         {
                 
         }
-        public List<Movies> GetMovies(int count = 12)
+        public List<Movies> GetMovies()
         {
             using (var db = new CinemaDb())
             {
-                return db.Movies.OrderByDescending(m => m.AvailableTime).Take(count).ToList();
+                return db.Movies.OrderBy(c => c.Title).ToList();
             }
         }
 
@@ -30,6 +30,19 @@ namespace CinemaLogic.Managers
                     .ToList();
             }
         }
+
+        public Movies OneMovie(int id)
+        {
+            using (var db = new CinemaDb())
+            {
+                return db.Movies.FirstOrDefault(m => m.Id == id);
+            }
+
+
+
+        }
+
+
 
 
         public Movies BookAMovie(string title)
