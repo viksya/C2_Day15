@@ -12,18 +12,18 @@ namespace CinemaWeb.Controllers
     {
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
-        CategoryModel model = new CategoryModel();
-        MovieModel movModel = new MovieModel();
+        private CategoryModel model = new CategoryModel();
+        private MovieModel movModel = new MovieModel();
 
 
         public IActionResult Category(int? id)
         {
             
             model.Categories = category.GetCategories();
+
             if (id.HasValue)
             {
                 model.ActiveCategory = category.GetCategory(id.Value);
-
                 model.Movies = movie.GetMovByCategory(id.Value);
             }
             else
@@ -35,7 +35,7 @@ namespace CinemaWeb.Controllers
 
 
 
-
+        [HttpGet]
         public IActionResult Movie(int? id)
         {
             movModel.Movies = movie.GetMovies();
@@ -43,36 +43,16 @@ namespace CinemaWeb.Controllers
             if (id.HasValue)
             {
                 movModel.ActiveMovie = movie.OneMovie(id.Value);
-                movModel.Movies = movie.GetMovByCategory(id.Value);
+                //movModel.Movies = movie.GetMovByCategory(id.Value);
             }
             return View(movModel);
         }
+        //[HttpPost]
+        //public IActionResult Movie()
+        //{
 
-        public IActionResult Booking()
-        {
-            BookingModel model = new BookingModel();
-            return View(model);
-        }
-
-
-        public IActionResult BookAMovie(string title)
-        {
-            movie.BookAMovie(title);
-
-            return RedirectToAction(nameof(Booking));
-        }
-
-        public IActionResult CancelBooking(string title)
-        {
-            movie.CancelBooking(title);
-
-            // send to page
-            return RedirectToAction(nameof(Booking));
-        }
-
-
-
-
+        //    return RedirectToAction("Booking", "Booking");
+        //}
 
     }
 }
