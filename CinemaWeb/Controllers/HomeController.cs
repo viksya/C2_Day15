@@ -15,34 +15,48 @@ namespace CinemaWeb.Controllers
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
         CategoryModel model = new CategoryModel();
-        MovieModel movModel = new MovieModel();
+        IndexModel indexModel = new IndexModel();
 
         public IActionResult Index(int? id)
         {
             //var movies = movie.GetMovies();
-            movModel.Movies = movie.GetMovies();
+            indexModel.Movies = movie.GetMovies();
+            indexModel.Categories = category.GetCategories();
             if (id.HasValue)
             {
-                movModel.ActiveCategory = category.GetCategory(id.Value);
+                indexModel.ActiveCategory = category.GetCategory(id.Value);
 
-                movModel.Movies = movie.GetMovByCategory(id.Value);
+                indexModel.Movies = movie.GetMovByCategory(id.Value);
             }
 
 
-            return View(movModel);
+            return View(indexModel);
         }
 
-        public IActionResult dropdownCategory(int? id)
+        //public IActionResult dropdownCategory(int id)
+        //{
+        //    CategoryModel model = new CategoryModel();
+        //    model.Categories = category.GetDropdCategories();
+        //    //if (id.HasValue)
+        //    //{
+        //    //    model.ActiveCategory = category.GetCategory(id.Value);
+
+        //    //}
+
+        //    return View(model);
+        //}
+
+        public IActionResult dropdownCategory(int id)
         {
-            CategoryModel model = new CategoryModel();
-            model.Categories = category.GetCategories();
-            if (id.HasValue)
-            {
-                model.ActiveCategory = category.GetCategory(id.Value);
 
-            }
+            indexModel.Categories = category.GetCategories();
 
-            return View(model);
+                indexModel.ActiveCategory = category.GetCategory(id);
+
+                indexModel.Movies = movie.GetMovByCategory(id);
+
+
+            return View(indexModel);
         }
     }
 }
