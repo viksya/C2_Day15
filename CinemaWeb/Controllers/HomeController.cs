@@ -14,54 +14,37 @@ namespace CinemaWeb.Controllers
     {
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
-        IndexModel indexModel = new IndexModel();
+        private IndexModel indexModel = new IndexModel();
+        private MovieModel movModel = new MovieModel();
 
-        public IActionResult Index(int? id)
+        public IActionResult Index()
         {
-            //var movies = movie.GetMovies();
             indexModel.Movies = movie.GetMovies();
             indexModel.Categories = category.GetCategories();
-            if (id.HasValue)
-            {
-                indexModel.ActiveCategory = category.GetCategory(id.Value);
-                indexModel.ActiveMovie = movie.OneMovie(id.Value);
-                indexModel.Movies = movie.GetMovByCategory(id.Value);
-            }
-            //else
-            //{
-            //    indexModel.Categories = category.GetCategories();
-            //}
 
             return View(indexModel);
         }
 
+        public IActionResult HomepageMovie(int? id)
+        {
+            indexModel.Movies = movie.GetMovies();
+
+            if (id.HasValue)
+            {
+                indexModel.ActiveMovie = movie.OneMovie(id.Value);
+            }
+            return View(movModel);
+            //return RedirectToAction("Movie", "Movies");
+        }
 
 
 
         //public IActionResult dropdownCategory(int id)
         //{
-        //    CategoryModel model = new CategoryModel();
-        //    model.Categories = category.GetDropdCategories();
-        //    //if (id.HasValue)
-        //    //{
-        //    //    model.ActiveCategory = category.GetCategory(id.Value);
-
-        //    //}
-
-        //    return View(model);
+        //    indexModel.Categories = category.GetCategories();
+        //    indexModel.ActiveCategory = category.GetCategory(id);
+        //    indexModel.Movies = movie.GetMovByCategory(id);
+        //    return View(indexModel);
         //}
-
-        public IActionResult dropdownCategory(int id)
-        {
-
-            indexModel.Categories = category.GetCategories();
-
-            indexModel.ActiveCategory = category.GetCategory(id);
-
-            indexModel.Movies = movie.GetMovByCategory(id);
-
-
-            return View(indexModel);
-        }
     }
 }

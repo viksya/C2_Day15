@@ -40,7 +40,6 @@ namespace CinemaLogic.Managers
             }
         }
 
-
         public Movies BookAMovie(int id)
         {
             using (var db = new CinemaDb())
@@ -65,8 +64,5 @@ namespace CinemaLogic.Managers
             }
             return null;
         }
-
-
-
     }
 }

@@ -28,14 +28,13 @@ namespace CinemaLogic.Managers
             }
         }
 
-        public List<Categories> GetDropdCategories(int id)
-        {
-            using (var db = new CinemaDb())
-            {
-                return db.Categories.OrderBy(c => c.Title).ToList();
-            }
-        }
 
-
+        //public List<Categories> GetDropdCategories(int id)
+        //{
+        //    using (var db = new CinemaDb())
+        //    {
+        //        return db.Categories.OrderBy(c => c.Title).ToList();
+        //    }
+        //}
     }
 }
