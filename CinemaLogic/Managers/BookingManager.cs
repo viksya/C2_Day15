@@ -22,28 +22,28 @@ namespace CinemaLogic.Managers
             }
         }
 
-        public Movies BookAMovie(int id)
-        {
-            using (var db = new CinemaDb())
-            {
-                var movie = db.Movies.FirstOrDefault(m => m.Id == id);
+        //public Movies BookAMovie(int id)
+        //{
+        //    using (var db = new CinemaDb())
+        //    {
+        //        var movie = db.Movies.FirstOrDefault(m => m.Id == id);
 
-                if (movie != null)
-                {
-                    db.Bookings.Add(new Bookings()
-                    {
-                        MovieId = movie.Id,
-                        Title = movie.Title,
-                        SelectedTime = movie.AvailableTime,
-                    });
+        //        if (movie != null)
+        //        {
+        //            db.Bookings.Add(new Bookings()
+        //            {
+        //                MovieId = movie.Id,
+        //                Title = movie.Title,
+        //                SelectedTime = movie.AvailableTime,
+        //            });
 
-                    db.SaveChanges();
+        //            db.SaveChanges();
 
-                    return movie;
-                }
-            }
-            return null;
-        }
+        //            return movie;
+        //        }
+        //    }
+        //    return null;
+        //}
 
         public Bookings CancelBooking(int id)
         {

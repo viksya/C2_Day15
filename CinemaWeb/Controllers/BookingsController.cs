@@ -39,12 +39,12 @@ namespace CinemaWeb.Controllers
             return View(bookings);
         }
 
-        public IActionResult BookAMovie(int id)
-        {
-            booking.BookAMovie(id);
+        //public IActionResult BookAMovie(int id)
+        //{
+        //    booking.BookAMovie(id);
 
-            return RedirectToAction(nameof(UserBookings));
-        }
+        //    return RedirectToAction(nameof(UserBookings));
+        //}
 
 
 

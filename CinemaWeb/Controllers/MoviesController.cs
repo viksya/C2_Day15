@@ -12,6 +12,7 @@ namespace CinemaWeb.Controllers
     {
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
+        private BookingManager booking = new BookingManager();
         private CategoryModel model = new CategoryModel();
         private MovieModel movModel = new MovieModel();
 
@@ -33,7 +34,12 @@ namespace CinemaWeb.Controllers
             return View(model);
         }
 
+        public IActionResult BookAMovie(int id)
+        {
+            movie.BookAMovie(id);
 
+            return RedirectToAction("UserBookings", "Bookings");
+        }
 
         //[HttpGet]
         public IActionResult Movie(int? id)
