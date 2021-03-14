@@ -50,17 +50,18 @@ namespace CinemaWeb.Controllers
 
 
 
-        public IActionResult BookAMovie(int? id)
+        public IActionResult BookAMovie(int id)
         {
-            movModel.Movies = movie.GetMovies();
+            //movModel.Movies = movie.GetMovies();
 
-            if (id.HasValue)
-            {
-                bookingModel.ActiveMovie = movie.BookAMovie(id.Value);
-            }
+            //if (id.HasValue)
+            //{
+            //    bookingModel.ActiveMovie = movie.BookAMovie(id.Value);
+            //}
 
-            //movie.BookAMovie(id);
+            movie.BookAMovie(id);
             return RedirectToAction("Booking", "Bookings");
+            //return RedirectToAction(nameof(UserBookings));
         }
 
 

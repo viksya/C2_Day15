@@ -53,6 +53,8 @@ namespace CinemaLogic.Managers
                     {
                         MovieId = movie.Id,
                         Title = movie.Title,
+                        Pic = movie.Pic,
+                        Description = movie.Description,
                         SelectedTime = movie.AvailableTime,
                     });
 

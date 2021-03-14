@@ -36,6 +36,10 @@ namespace CinemaLogic.DB
         {
             modelBuilder.Entity<Bookings>(entity =>
             {
+                entity.Property(e => e.Description).HasMaxLength(2000);
+
+                entity.Property(e => e.Pic).HasMaxLength(200);
+
                 entity.Property(e => e.SelectedTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Title).HasMaxLength(100);

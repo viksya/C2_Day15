@@ -10,46 +10,27 @@ namespace CinemaWeb.Controllers
 {
     public class BookingsController : Controller
     {
-        private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
         private BookingManager booking = new BookingManager();
-        private CategoryModel model = new CategoryModel();
         private MovieModel movModel = new MovieModel();
         private BookingModel bookingModel = new BookingModel();
 
 
-        public IActionResult Booking(int? id)
+        public IActionResult Booking() 
         {
-            bookingModel.Movies = movie.GetMovies();
-            bookingModel.Categories = category.GetCategories();
-
-            if (id.HasValue)
-            {
-                bookingModel.ActiveCategory = category.GetCategory(id.Value);
-                bookingModel.ActiveMovie = movie.OneMovie(id.Value);
-                bookingModel.Movies = movie.GetMovByCategory(id.Value);
-            }
-            return View(bookingModel);
-
-            //var bookings = booking.UserBookings();
-
-            //return View(bookings);
-
-        }
-
-        public IActionResult UserBookings()
-        {
-            var bookings = booking.UserBookings();
+            var bookings = booking.UserBookings(); //UserBookings - list
 
             return View(bookings);
+
         }
 
-        ////////public IActionResult BookAMovie(int id)
-        ////////{
-        ////////    booking.BookAMovie(id);
+        //public IActionResult UserBookings()
+        //{
+        //    var bookings = booking.UserBookings();
 
-        ////////    return RedirectToAction(nameof(UserBookings));
-        ////////}
+        //    return View(bookings);
+        //}
+
 
 
 
