@@ -8,18 +8,18 @@ namespace CinemaWeb.Models
 {
     public class BookingModel
     {
-        public List<Categories> Categories { get; set; }
+        //public List<Categories> Categories { get; set; }
 
-        public List<Movies> Movies { get; set; }
+        //public List<Movies> Movies { get; set; }
 
-        public List<Bookings> Bookings { get; set; }
+        //public List<Bookings> Bookings { get; set; }
 
-        public Categories ActiveCategory { get; set; }
+        //public Categories ActiveCategory { get; set; }
 
-        public Movies ActiveMovie { get; set; }
+        //public Movies ActiveMovie { get; set; }
 
-        public Bookings ActiveBooking { get; set; }
+        //public Bookings ActiveBooking { get; set; }
 
-        
+        // no need for now
     }
 }

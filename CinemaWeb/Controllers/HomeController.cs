@@ -17,23 +17,26 @@ namespace CinemaWeb.Controllers
         private IndexModel indexModel = new IndexModel();
         private MovieModel movModel = new MovieModel();
 
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
             indexModel.Movies = movie.GetMovies();
             indexModel.Categories = category.GetCategories();
-
-            return View(indexModel);
-        }
-
-        public IActionResult HomepageMovie(int? id)
-        {
-            indexModel.Movies = movie.GetMovies();
-
             if (id.HasValue)
             {
                 indexModel.ActiveMovie = movie.OneMovie(id.Value);
+                movie.OneMovie(id.Value);
+                return RedirectToAction("Movie", "Movies");
             }
-            return View(movModel);
+            return View(indexModel);
+        }
+
+        public IActionResult HomepageMovie(int id)
+        {
+
+            movie.OneMovie(id);
+            return RedirectToAction("Movie", "Movies");
+
+            //return View(movModel);
             //return RedirectToAction("Movie", "Movies");
         }
 

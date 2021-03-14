@@ -24,7 +24,6 @@ namespace CinemaWeb.Controllers
 
         }
 
-
         public IActionResult CancelBooking(int id)
         {
             booking.CancelBooking(id);

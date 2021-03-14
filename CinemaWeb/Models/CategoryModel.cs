@@ -12,8 +12,6 @@ namespace CinemaWeb.Models
 
         public List<Movies> Movies { get; set; }
 
-        public List<Bookings> Bookings { get; set; }
-
         public Categories ActiveCategory { get; set; }
     }
 }

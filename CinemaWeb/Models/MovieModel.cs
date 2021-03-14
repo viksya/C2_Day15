@@ -8,13 +8,10 @@ namespace CinemaWeb.Models
 {
     public class MovieModel
     {
-        public List<Categories> Categories { get; set; }
-
         public List<Movies> Movies { get; set; }
 
         public List<Bookings> Bookings { get; set; }
 
-        public Categories ActiveCategory { get; set; }
         public Movies ActiveMovie { get; set; }
 
 

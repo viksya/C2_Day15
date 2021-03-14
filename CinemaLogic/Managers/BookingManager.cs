@@ -21,8 +21,6 @@ namespace CinemaLogic.Managers
             }
         }
 
-
-
         public Bookings CancelBooking(int id)
         {
             using (var db = new CinemaDb())
@@ -40,7 +38,5 @@ namespace CinemaLogic.Managers
 
             return null;
         }
-
-
     }
 }
