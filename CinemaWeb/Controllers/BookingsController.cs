@@ -24,24 +24,13 @@ namespace CinemaWeb.Controllers
 
         }
 
-        //public IActionResult UserBookings()
-        //{
-        //    var bookings = booking.UserBookings();
 
-        //    return View(bookings);
-        //}
+        public IActionResult CancelBooking(int id)
+        {
+            booking.CancelBooking(id);
 
-
-
-
-        //public IActionResult CancelBooking(int id)
-        //{
-        //    booking.CancelBooking(id);
-
-        //    return RedirectToAction(nameof(UserBookings));
-        //}
-
-
+            return RedirectToAction(nameof(Booking));
+        }
 
     }
 }

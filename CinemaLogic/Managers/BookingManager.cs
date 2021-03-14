@@ -21,25 +21,25 @@ namespace CinemaLogic.Managers
             }
         }
 
-       
 
-        //public Bookings CancelBooking(int id)
-        //{
-        //    using (var db = new CinemaDb())
-        //    {
-        //        var currentBooking = db.Bookings.FirstOrDefault(b => b.Id == id);
-        //        if (currentBooking != null)
-        //        {
-        //            db.Bookings.Remove(currentBooking);
 
-        //            db.SaveChanges();
+        public Bookings CancelBooking(int id)
+        {
+            using (var db = new CinemaDb())
+            {
+                var currentBooking = db.Bookings.FirstOrDefault(b => b.Id == id);
+                if (currentBooking != null)
+                {
+                    db.Bookings.Remove(currentBooking);
 
-        //            return currentBooking;
-        //        }
-        //    }
+                    db.SaveChanges();
 
-        //    return null;
-        //}
+                    return currentBooking;
+                }
+            }
+
+            return null;
+        }
 
 
     }

@@ -15,6 +15,7 @@
                         <a class="text-warning" asp-controller="Bookings" asp-action="Booking" asp-route-id="@booking.Id">@booking.Title</a>
                         <p class="card-text, text-warning">@booking.Description</p>
                         <p class="card-text"><small class="text-muted">@booking.SelectedTime</small></p>
+                        <a class="btn btn-warning" asp-controller="Bookings" asp-action="CancelBooking" asp-route-id="@booking.Id">Cancel booking</a>
                     </div>
                 </div>
             </div>
