@@ -15,7 +15,7 @@ namespace CinemaWeb.Controllers
         private BookingManager booking = new BookingManager();
         private CategoryModel model = new CategoryModel();
         private MovieModel movModel = new MovieModel();
-
+        private BookingModel bookingModel = new BookingModel();
 
         public IActionResult Category(int? id)
         {
@@ -34,31 +34,35 @@ namespace CinemaWeb.Controllers
             return View(model);
         }
 
-        public IActionResult BookAMovie(int id)
-        {
-            movie.BookAMovie(id);
 
-            return RedirectToAction("UserBookings", "Bookings");
-        }
-
-        //[HttpGet]
         public IActionResult Movie(int? id)
         {
             movModel.Movies = movie.GetMovies();
-            //var movies = movie.OneMovie(id);
+
             if (id.HasValue)
             {
                 movModel.ActiveMovie = movie.OneMovie(id.Value);
-                //movModel.Movies = movie.GetMovByCategory(id.Value);
             }
             return View(movModel);
         }
-        //[HttpPost]
-        //public IActionResult Movie()
-        //{
 
-        //    return RedirectToAction("Booking", "Booking");
-        //}
+
+
+
+
+        public IActionResult BookAMovie(int? id)
+        {
+            movModel.Movies = movie.GetMovies();
+
+            if (id.HasValue)
+            {
+                bookingModel.ActiveMovie = movie.BookAMovie(id.Value);
+            }
+
+            //movie.BookAMovie(id);
+            return RedirectToAction("Booking", "Bookings");
+        }
+
 
     }
 }

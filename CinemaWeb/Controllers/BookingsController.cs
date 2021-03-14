@@ -30,6 +30,11 @@ namespace CinemaWeb.Controllers
                 bookingModel.Movies = movie.GetMovByCategory(id.Value);
             }
             return View(bookingModel);
+
+            //var bookings = booking.UserBookings();
+
+            //return View(bookings);
+
         }
 
         public IActionResult UserBookings()
@@ -39,21 +44,21 @@ namespace CinemaWeb.Controllers
             return View(bookings);
         }
 
-        //public IActionResult BookAMovie(int id)
+        ////////public IActionResult BookAMovie(int id)
+        ////////{
+        ////////    booking.BookAMovie(id);
+
+        ////////    return RedirectToAction(nameof(UserBookings));
+        ////////}
+
+
+
+        //public IActionResult CancelBooking(int id)
         //{
-        //    booking.BookAMovie(id);
+        //    booking.CancelBooking(id);
 
         //    return RedirectToAction(nameof(UserBookings));
         //}
-
-
-
-        public IActionResult CancelBooking(int id)
-        {
-            booking.CancelBooking(id);
-
-            return RedirectToAction(nameof(UserBookings));
-        }
 
 
 
