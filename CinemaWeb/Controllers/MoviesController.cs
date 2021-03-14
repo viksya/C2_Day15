@@ -35,7 +35,7 @@ namespace CinemaWeb.Controllers
 
 
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Movie(int? id)
         {
             movModel.Movies = movie.GetMovies();

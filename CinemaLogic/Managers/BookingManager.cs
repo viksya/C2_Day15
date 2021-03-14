@@ -13,6 +13,7 @@ namespace CinemaLogic.Managers
 
         }
 
+
         public List<Bookings> UserBookings()
         {
             using (var db = new CinemaDb())
@@ -21,11 +22,11 @@ namespace CinemaLogic.Managers
             }
         }
 
-        public Movies BookAMovie(string title) //(maybe id????????)
+        public Movies BookAMovie(int id)
         {
             using (var db = new CinemaDb())
             {
-                var movie = db.Movies.FirstOrDefault(m => m.Title.ToLower() == title.ToLower());
+                var movie = db.Movies.FirstOrDefault(m => m.Id == id);
 
                 if (movie != null)
                 {
@@ -44,11 +45,11 @@ namespace CinemaLogic.Managers
             return null;
         }
 
-        public Bookings CancelBooking(string title)
+        public Bookings CancelBooking(int id)
         {
             using (var db = new CinemaDb())
             {
-                var currentBooking = db.Bookings.FirstOrDefault(b => b.Title.ToLower() == title.ToLower());
+                var currentBooking = db.Bookings.FirstOrDefault(b => b.Id == id);
                 if (currentBooking != null)
                 {
                     db.Bookings.Remove(currentBooking);

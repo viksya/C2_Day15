@@ -38,9 +38,7 @@ namespace CinemaLogic.DB
             {
                 entity.Property(e => e.SelectedTime).HasColumnType("datetime");
 
-                entity.Property(e => e.Title)
-                    .IsRequired()
-                    .HasMaxLength(100);
+                entity.Property(e => e.Title).HasMaxLength(100);
             });
 
             modelBuilder.Entity<Categories>(entity =>
@@ -57,6 +55,10 @@ namespace CinemaLogic.DB
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(2000);
+
+                entity.Property(e => e.Pic)
+                    .IsRequired()
+                    .HasMaxLength(200);
 
                 entity.Property(e => e.Title)
                     .IsRequired()

@@ -10,8 +10,8 @@ namespace CinemaLogic.DB
     public partial class Bookings
     {
         public int Id { get; set; }
-        public int MovieId { get; set; }
+        public int? MovieId { get; set; }
         public string Title { get; set; }
-        public DateTime SelectedTime { get; set; }
+        public DateTime? SelectedTime { get; set; }
     }
 }

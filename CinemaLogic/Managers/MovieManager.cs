@@ -12,6 +12,7 @@ namespace CinemaLogic.Managers
         {
                 
         }
+
         public List<Movies> GetMovies()
         {
             using (var db = new CinemaDb())

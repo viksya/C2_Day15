@@ -1,5 +1,6 @@
 ﻿@model BookingModel
 
+
 @if (Model.Bookings != null)
 {
     <div class="card mb-3" style="max-width: 1200px;">
@@ -9,7 +10,7 @@
 
             <div class="col-md-8 bg-dark">
                 <div class="card-body @(ViewContext.RouteData.Values["action"].ToString() == "Booking" ? "active" : "")">
-                    <a class="text-warning" asp-controller="Movies" asp-action="Movie" asp-route-id="@Model.ActiveMovie.Id">@Model.ActiveMovie.Title</a>
+                    <a class="text-warning" asp-controller="Bookings" asp-action="Booking" asp-route-id="@Model.ActiveMovie.Id">@Model.ActiveMovie.Title</a>
                     <p class="card-text, text-warning">@Model.ActiveMovie.Description</p>
                     <p class="card-text"><small class="text-muted">@Model.ActiveMovie.AvailableTime</small></p>
                 </div>

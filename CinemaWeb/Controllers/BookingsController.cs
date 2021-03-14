@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CinemaWeb.Controllers
 {
-    public class BookingController : Controller
+    public class BookingsController : Controller
     {
         private CategoryManager category = new CategoryManager();
         private MovieManager movie = new MovieManager();
@@ -16,7 +16,6 @@ namespace CinemaWeb.Controllers
         private CategoryModel model = new CategoryModel();
         private MovieModel movModel = new MovieModel();
         private BookingModel bookingModel = new BookingModel();
-
 
 
         public IActionResult Booking(int? id)
@@ -33,33 +32,28 @@ namespace CinemaWeb.Controllers
             return View(bookingModel);
         }
 
-
-        public IActionResult BookAMovie(string title)
+        public IActionResult UserBookings()
         {
-            movie.BookAMovie(title);
-            //return RedirectToAction(nameof(Booking));
-            return View(bookingModel);
+            var bookings = booking.UserBookings();
+
+            return View(bookings);
         }
 
-        //public IActionResult UserBookings()
-        //{
-        //    //bookingModel.ActiveBooking.Id= movModel.ActiveMovie.Id();
-        //    return View(bookingModel);
-        //}
+        public IActionResult BookAMovie(int id)
+        {
+            booking.BookAMovie(id);
 
-        //public IActionResult CancelBooking(string title)
-        //{
-        //    //movie.CancelBooking(title);
-
-        //    // send to page
-        //    return RedirectToAction(nameof(Booking));
-        //}
+            return RedirectToAction(nameof(UserBookings));
+        }
 
 
 
+        public IActionResult CancelBooking(int id)
+        {
+            booking.CancelBooking(id);
 
-
-
+            return RedirectToAction(nameof(UserBookings));
+        }
 
 
 
