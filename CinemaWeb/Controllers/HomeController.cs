@@ -21,23 +21,14 @@ namespace CinemaWeb.Controllers
         {
             indexModel.Movies = movie.GetMovies();
             indexModel.Categories = category.GetCategories();
+            
             if (id.HasValue)
             {
-                indexModel.ActiveMovie = movie.OneMovie(id.Value);
                 movie.OneMovie(id.Value);
-                return RedirectToAction("Movie", "Movies");
+                movModel.ActiveMovie = movie.OneMovie(id.Value);
+                return RedirectToAction("Movie", "Movies", new { id });
             }
             return View(indexModel);
-        }
-
-        public IActionResult HomepageMovie(int id)
-        {
-
-            movie.OneMovie(id);
-            return RedirectToAction("Movie", "Movies");
-
-            //return View(movModel);
-            //return RedirectToAction("Movie", "Movies");
         }
 
 

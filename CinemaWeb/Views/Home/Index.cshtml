@@ -16,18 +16,23 @@
         </li>
     </ul>
 </div>
+<div class="row">
 
-<div class="row row-cols-md-2">
-        @foreach (var movie in Model.Movies)
-        {
-            <div class="card" style="max-width: 300px;"><img src="@movie.Pic" class="card-img-top" alt="..."></div>
-            <div class="card-body bg-dark">
-                <p>
-                    <u>
-                        <a class="text-warning" asp-controller="Home" asp-action="Index" asp-route-id="@movie.Id">@movie.Title</a>
-                    </u>
-                </p>
+    @foreach (var movie in Model.Movies)
+    {
+    <div class="col-md-4 col-sm-12 mb-3">
+        <div class="card" style="max-width: 400px; max-height: 250px;"><img src="@movie.Pic" class="card-img-top" alt="..."></div>
+        <div class="card-body bg-dark">
+            <p>
+                <u>
+                    <a class="text-warning" asp-controller="Home" asp-action="Index" asp-route-id="@movie.Id">@movie.Title</a>
+                </u>
+            </p>
+            <div class="card-footer">
                 <p class="card-text"><small class="text-muted">@movie.AvailableTime</small></p>
             </div>
-        }
+        </div>
     </div>
+            }
+        </div>
+    
