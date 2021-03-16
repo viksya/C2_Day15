@@ -4,17 +4,17 @@
     <ul class="nav nav-pills mb-3">
         @foreach (var category in Model.Categories)
         {
-            <li class="nav-item @(ViewContext.RouteData.Values["action"].ToString() == "Category" ? "active" : "")">
-                <a class="nav-link text-warning" asp-controller="Movies" asp-action="Category" asp-route-id="@category.Id">@category.Title</a>
+            <li class="nav-item ">
+                <a class="nav-link text-warning @(category.Id == Model.ActiveCategory?.Id ? "active" : "")" asp-controller="Movies" asp-action="Category" asp-route-id="@category.Id">@category.Title</a>
             </li>
+
+            if (category.Id == Model.ActiveCategory?.Id)
+            {
+
+            }
         }
     </ul>
-    @if (Model.ActiveCategory != null)
-    {
-        <li class="nav-item">
-            <a class="nav-link active text-dark bg-warning" asp-controller="Movies" asp-action="Category" asp-route-id="@Model.ActiveCategory.Id">@Model.ActiveCategory.Title</a>
-        </li>
-    }
+
 </div>
 
 
