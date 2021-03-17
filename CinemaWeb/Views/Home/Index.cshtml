@@ -6,7 +6,7 @@
             <a class="nav-link active bg-warning" aria-current="page" asp-controller="Home" asp-action="Index">TOP</a>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle text-warning" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" asp-controller="Movies" asp-action="Category" asp-route-id="@Model.Categories"> Categories</a>
+            <a class="nav-link dropdown-toggle text-warning" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="#"> Categories</a>
             <ul class="dropdown-menu">
                 @foreach (var category in Model.Categories)
                 {

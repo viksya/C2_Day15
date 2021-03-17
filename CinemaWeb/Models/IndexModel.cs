@@ -15,5 +15,9 @@ namespace CinemaWeb.Models
         public Categories ActiveCategory { get; set; }
 
         public Movies ActiveMovie { get; set; }
+
+        //public int? categories { get; set; }
+
+
     }
 }
