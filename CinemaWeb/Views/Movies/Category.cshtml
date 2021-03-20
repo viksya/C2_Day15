@@ -7,13 +7,9 @@
             <li class="nav-item ">
                 <a class="nav-link text-warning @(category.Id == Model.ActiveCategory?.Id ? "active" : "")" asp-controller="Movies" asp-action="Category" asp-route-id="@category.Id">@category.Title</a>
             </li>
-
-            if (category.Id == Model.ActiveCategory?.Id)
-            {
-
-            }
         }
-    </ul>
+
+</ul>
 
 </div>
 
