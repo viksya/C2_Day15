@@ -1,5 +1,21 @@
 ﻿@model List<CinemaLogic.DB.Bookings>
 
+<div class="p-1 mb-2 bg-dark text-light">
+    <ul class="nav nav-pills mb-3">
+        <li class="nav-item ">
+            <a class="nav-link" asp-controller="UserController" asp-action="Login">Log In</a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" asp-controller="UserController" asp-action="Register">Sign Up</a>
+        </li>
+
+    </ul>
+
+</div>
+
+
+
+
 
 @if (Model.Count != 0)
 {
