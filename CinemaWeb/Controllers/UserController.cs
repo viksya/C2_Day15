@@ -70,7 +70,7 @@ namespace CinemaWeb.Controllers
                     HttpContext.Session.SetUsername(user.Username);
                     HttpContext.Session.SetIsAdmin(user.IsAdmin);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Booking", "Bookings");
                 }
             }
 
