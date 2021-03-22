@@ -31,5 +31,13 @@ namespace CinemaWeb.Controllers
             return RedirectToAction(nameof(Booking));
         }
 
+        //public IActionResult LogIn()
+        //{
+        //    return RedirectToAction("Login", "UserController");
+        //}
+        //public IActionResult Register()
+        //{
+        //    return RedirectToAction("Register", "UserController");
+        //}
     }
 }
