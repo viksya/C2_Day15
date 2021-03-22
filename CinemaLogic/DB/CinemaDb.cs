@@ -22,6 +22,7 @@ namespace CinemaLogic.DB
         public virtual DbSet<Bookings> Bookings { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Movies> Movies { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -67,6 +68,21 @@ namespace CinemaLogic.DB
                 entity.Property(e => e.Title)
                     .IsRequired()
                     .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<Users>(entity =>
+            {
+                entity.Property(e => e.Email)
+                    .IsRequired()
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Password)
+                    .IsRequired()
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasMaxLength(20);
             });
 
             OnModelCreatingPartial(modelBuilder);
