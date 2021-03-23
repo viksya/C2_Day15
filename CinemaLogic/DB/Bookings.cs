@@ -15,5 +15,11 @@ namespace CinemaLogic.DB
         public string Pic { get; set; }
         public string Description { get; set; }
         public DateTime? SelectedTime { get; set; }
+        public int? TicketCount { get; set; }
+        public string SeatType { get; set; }
+        public int? SeatPrice { get; set; }
+        public int? Auditorium { get; set; }
+        public int? TotalPrice { get; set; }
+        public int? UserId { get; set; }
     }
 }

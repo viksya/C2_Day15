@@ -7,13 +7,10 @@ using System.Collections.Generic;
 
 namespace CinemaLogic.DB
 {
-    public partial class Users
+    public partial class Auditoriums
     {
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public bool IsAdmin { get; set; }
-        public int? CurrentBookingId { get; set; }
+        public int Number { get; set; }
+        public int Capacity { get; set; }
     }
 }

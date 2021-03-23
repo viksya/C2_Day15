@@ -14,6 +14,8 @@ namespace CinemaWeb.Models
 
         public Movies ActiveMovie { get; set; }
 
+        public List<Auditoriums> Auditoriums { get; set; }
 
+        public Auditoriums Auditorium { get; set; }
     }
 }

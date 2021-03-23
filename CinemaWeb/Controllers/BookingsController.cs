@@ -16,12 +16,16 @@ namespace CinemaWeb.Controllers
         private BookingModel bookingModel = new BookingModel();
 
 
-        public IActionResult Booking() 
+        public IActionResult Booking(int? id) 
         {
-            var bookings = booking.UserBookings(); //UserBookings - list
+            bookingModel.Bookings = booking.UserBookings();
 
-            return View(bookings);
+            if (id.HasValue)
+            {
+                bookingModel.ActiveBooking = booking.CurrentBooking(id.Value);
+            }
 
+            return View(bookingModel);
         }
 
         public IActionResult CancelBooking(int id)

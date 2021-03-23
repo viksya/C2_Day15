@@ -9,6 +9,7 @@ namespace CinemaWeb
     public static class SessionExtensions
     {
         public const string SESSION_USERNAME = "username";
+        public const string SESSION_USERID = "userId";
         public const string SESSION_ISADMIN = "isAdmin";
 
         public static void SetUsername(this ISession session, string username)
@@ -19,6 +20,11 @@ namespace CinemaWeb
         public static string GetUsername(this ISession session)
         {
             return session.GetString(SESSION_USERNAME);
+        }
+
+        public static string GetUserId(this ISession session)
+        {
+            return session.GetString(SESSION_USERID);
         }
 
         public static bool IsSignedIn(this ISession session)

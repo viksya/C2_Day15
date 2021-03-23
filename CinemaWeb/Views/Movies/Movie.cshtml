@@ -6,8 +6,9 @@
         <h5>
             <a class="card-title, text-warning" asp-controller="Movies" asp-action="Movie" asp-route-id="@Model.ActiveMovie.Id">@Model.ActiveMovie.Title</a>
         </h5>
-        <p class="card-text, text-warning">@Model.ActiveMovie.Description.</p>
+        <p class="card-text, text-warning">@Model.ActiveMovie.Description</p>
         <p class="card-text"><small class="text-muted">@Model.ActiveMovie.AvailableTime</small></p>
+        <p class="card-text, text-warning">Auditorium @Model.ActiveMovie.AuditoriumId .</p>
         <blockquote class="blockquote text-right">
             <a class="btn btn-warning" asp-controller="Movies" asp-action="BookAMovie" asp-route-id="@Model.ActiveMovie.Id">Book</a>
         </blockquote>

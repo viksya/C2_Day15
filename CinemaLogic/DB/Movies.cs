@@ -15,5 +15,7 @@ namespace CinemaLogic.DB
         public string Pic { get; set; }
         public string Description { get; set; }
         public DateTime AvailableTime { get; set; }
+        public decimal? BasePrice { get; set; }
+        public int AuditoriumId { get; set; }
     }
 }

@@ -21,6 +21,14 @@ namespace CinemaLogic.Managers
             }
         }
 
+        public Bookings CurrentBooking(int id)
+        {
+            using (var db = new CinemaDb())
+            {
+                return db.Bookings.FirstOrDefault(b => b.Id == id);
+            }
+        }
+
         public Bookings CancelBooking(int id)
         {
             using (var db = new CinemaDb())

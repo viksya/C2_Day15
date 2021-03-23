@@ -19,9 +19,11 @@ namespace CinemaLogic.DB
         {
         }
 
+        public virtual DbSet<Auditoriums> Auditoriums { get; set; }
         public virtual DbSet<Bookings> Bookings { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
         public virtual DbSet<Movies> Movies { get; set; }
+        public virtual DbSet<SeatTypes> SeatTypes { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -41,6 +43,8 @@ namespace CinemaLogic.DB
 
                 entity.Property(e => e.Pic).HasMaxLength(200);
 
+                entity.Property(e => e.SeatType).HasMaxLength(50);
+
                 entity.Property(e => e.SelectedTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Title).HasMaxLength(100);
@@ -57,6 +61,8 @@ namespace CinemaLogic.DB
             {
                 entity.Property(e => e.AvailableTime).HasColumnType("datetime");
 
+                entity.Property(e => e.BasePrice).HasColumnType("money");
+
                 entity.Property(e => e.Description)
                     .IsRequired()
                     .HasMaxLength(2000);
@@ -68,6 +74,18 @@ namespace CinemaLogic.DB
                 entity.Property(e => e.Title)
                     .IsRequired()
                     .HasMaxLength(100);
+            });
+
+            modelBuilder.Entity<SeatTypes>(entity =>
+            {
+                entity.HasKey(e => e.SeatTypeId)
+                    .HasName("PK__SeatType__7468C4FE4CEB23B7");
+
+                entity.Property(e => e.Naming)
+                    .IsRequired()
+                    .HasMaxLength(50);
+
+                entity.Property(e => e.Price).HasColumnType("money");
             });
 
             modelBuilder.Entity<Users>(entity =>
