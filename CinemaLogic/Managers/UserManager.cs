@@ -46,5 +46,17 @@ namespace CinemaLogic.Managers
                 return db.Users.FirstOrDefault(u => u.Username.ToLower() == username.ToLower() && u.Password == password);
             }
         }
+
+        public void Update(int curUserId, int bookingId)
+        {
+            using (var db = new CinemaDb())
+            {
+                var bookingData = db.Bookings.FirstOrDefault(b => b.Id == bookingId);
+
+                bookingData.UserId = curUserId;
+
+                db.SaveChanges();
+            }
+        }
     }
 }

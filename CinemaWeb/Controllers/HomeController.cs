@@ -30,15 +30,5 @@ namespace CinemaWeb.Controllers
             }
             return View(indexModel);
         }
-
-
-
-        //public IActionResult dropdownCategory(int id)
-        //{
-        //    indexModel.Categories = category.GetCategories();
-        //    indexModel.ActiveCategory = category.GetCategory(id);
-        //    indexModel.Movies = movie.GetMovByCategory(id);
-        //    return View(indexModel);
-        //}
     }
 }

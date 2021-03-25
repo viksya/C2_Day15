@@ -12,6 +12,7 @@ namespace CinemaWeb.Controllers
     {
         private MovieManager movie = new MovieManager();
         private BookingManager booking = new BookingManager();
+        private UserManager user = new UserManager();
         private MovieModel movModel = new MovieModel();
         private BookingModel bookingModel = new BookingModel();
 
@@ -19,10 +20,23 @@ namespace CinemaWeb.Controllers
         public IActionResult Booking(int? id) 
         {
             bookingModel.Bookings = booking.UserBookings();
+            bookingModel.SeatTypes = booking.GetSeatTypes();
 
             if (id.HasValue)
             {
                 bookingModel.ActiveBooking = booking.CurrentBooking(id.Value);
+            }
+                return View(bookingModel);
+        }
+
+        public IActionResult SeatType(int? id)
+        {
+            bookingModel.SeatTypes = booking.GetSeatTypes();
+
+            if (id.HasValue)
+            {
+                bookingModel.ChosenSeat = booking.GetSeatType(id.Value);
+                //model.Movies = movie.GetMovByCategory(id.Value);
             }
 
             return View(bookingModel);
@@ -34,14 +48,5 @@ namespace CinemaWeb.Controllers
 
             return RedirectToAction(nameof(Booking));
         }
-
-        //public IActionResult LogIn()
-        //{
-        //    return RedirectToAction("Login", "UserController");
-        //}
-        //public IActionResult Register()
-        //{
-        //    return RedirectToAction("Register", "UserController");
-        //}
     }
 }

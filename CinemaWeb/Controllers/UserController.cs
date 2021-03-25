@@ -1,6 +1,7 @@
 ﻿using CinemaLogic;
 using CinemaLogic.Managers;
 using CinemaWeb.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace CinemaWeb.Controllers
     public class UserController : Controller
     {
         private UserManager manager = new UserManager();
+        private BookingModel bookingModel = new BookingModel();
 
         [HttpGet]
         public IActionResult Register()

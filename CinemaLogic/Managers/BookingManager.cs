@@ -29,6 +29,23 @@ namespace CinemaLogic.Managers
             }
         }
 
+        public List<SeatTypes> GetSeatTypes()
+        {
+            using (var db = new CinemaDb())
+            {
+                return db.SeatTypes.OrderBy(s => s.SeatTypeId).ToList();
+            }
+        }
+
+        public SeatTypes GetSeatType(int id)
+        {
+            using (var db = new CinemaDb())
+            {
+                return db.SeatTypes.FirstOrDefault(s => s.SeatTypeId == id);
+            }
+        }
+
+
         public Bookings CancelBooking(int id)
         {
             using (var db = new CinemaDb())
@@ -43,7 +60,6 @@ namespace CinemaLogic.Managers
                     return currentBooking;
                 }
             }
-
             return null;
         }
     }

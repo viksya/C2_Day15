@@ -27,14 +27,5 @@ namespace CinemaLogic.Managers
                 return db.Categories.FirstOrDefault(c => c.Id == id);
             }
         }
-
-
-        //public List<Categories> GetDropdCategories(int id)
-        //{
-        //    using (var db = new CinemaDb())
-        //    {
-        //        return db.Categories.OrderBy(c => c.Title).ToList();
-        //    }
-        //}
     }
 }

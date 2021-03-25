@@ -22,10 +22,19 @@ namespace CinemaWeb
             return session.GetString(SESSION_USERNAME);
         }
 
-        public static string GetUserId(this ISession session)
-        {
-            return session.GetString(SESSION_USERID);
-        }
+
+
+
+        //public static void SetUserId(this ISession session, int userId)
+        //{
+        //    session.SetString(SESSION_USERID, userId.ToString());
+        //}
+        //public static string GetUserId(this ISession session)
+        //{
+        //    return session.GetString(SESSION_USERID);
+        //}
+
+
 
         public static bool IsSignedIn(this ISession session)
         {

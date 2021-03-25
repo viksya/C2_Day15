@@ -55,13 +55,9 @@ namespace CinemaLogic.Managers
                         Pic = movie.Pic,
                         Description = movie.Description,
                         SelectedTime = movie.AvailableTime,
-                        Auditorium = movie.AuditoriumId,
-
-                        if (HttpContext.Session.IsSignedIn())
-                    {
-                        
-                    }
+                        Auditorium = movie.AuditoriumId, 
                     });
+
 
                     db.SaveChanges();
 

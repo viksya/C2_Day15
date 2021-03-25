@@ -24,7 +24,7 @@ namespace CinemaWeb.Models
 
         public Bookings ActiveBooking { get; set; }
         public Auditoriums Auditorium { get; set; }
-        public SeatTypes SeatType { get; set; }
+        public SeatTypes ChosenSeat { get; set; }
 
 
     }

@@ -14,8 +14,6 @@
     </li>
 
 
-
-
     @if (Model.Bookings.Count != 0)
     {
         @foreach (var booking in Model.Bookings)
@@ -29,11 +27,42 @@
                             <p class="card-text, text-warning">@booking.Description</p>
                             <p class="card-text"><small class="text-muted">@booking.SelectedTime</small></p>
                             <p class="card-text, text-warning">Auditorium @booking.Auditorium .</p>
-                            <a class="btn btn-warning" asp-controller="Bookings" asp-action="CancelBooking" asp-route-id="@booking.Id">Cancel booking</a>
+                        </div>
+                    </div>
+
+
+                    <div class="container bg-warning text-dark">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <p class="card-text">Booking information</p>
+                                <p class="card-text">Tickets: ____________________</p>
+                            </div>
+
+                            <div class="col-md-4">
+                                <br />
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary btn-dark text-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Select your seat</button>
+                                    <div class="dropdown-menu bg-transparent text-warning" aria-labelledby="dropdownMenuButton">
+                                        @foreach (var seatType in Model.SeatTypes)
+                                        {
+                                            <a class="dropdown-item @(seatType.SeatTypeId == Model.ChosenSeat?.SeatTypeId ? "active" : "")" asp-controller="Bookings" asp-action="SeatType" asp-route-id="@seatType.SeatTypeId">@seatType.Naming | @seatType.Price</a>
+                                        }
+                                    </div>
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <br />
+                                <blockquote class="blockquote text-right">
+                                    <a class="btn btn-dark text-warning btn-sm" asp-controller="Bookings" asp-action="CancelBooking" asp-route-id="@booking.Id">Cancel booking</a>
+                                </blockquote>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+
         }
     }
 
@@ -42,6 +71,12 @@
         <div class="alert alert-warning" role="alert">You don't have any active bookings!</div>
     }
 }
+
+
+
+
+
+
 
 else
 {
@@ -78,7 +113,7 @@ else
                     </div>
                 </div>
             </div>
-            <div class="alert alert-warning" role="alert">To continue with your booking, you must to sign in first</div>
+            <div class="alert alert-warning" role="alert">To continue with your booking, you must sign in first</div>
         }
     }
 
